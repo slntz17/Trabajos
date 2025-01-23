@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 600px; /* Ancho total del formulario */
+            margin: auto;
+            box-sizing: border-box;
+        }
+        .section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px; /* Espacio entre bloques */
+            box-sizing: border-box;
+        }
+        .section h3 {
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+        .section label {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .section input[type="text"],
+        .section input[type="password"],
+        .section input[type="email"] {
+            width: calc(100% - 10px); /* Para mantener bordes */
+            padding: 5px;
+            font-size: 0.9em;
+            border: 1px solid #ccc; /* Bordes del campo */
+            border-radius: 4px; /* Bordes redondeados */
+            box-sizing: border-box; /* Para incluir padding en el tamaño total */
+        }
+        .section input[type="text"]:focus,
+        .section input[type="password"]:focus,
+        .section input[type="email"]:focus {
+            border-color: #007BFF; /* Color del borde al enfocar */
+            outline: none; /* Eliminar contorno por defecto */
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px; /* Espacio entre campos y botón */
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: 1px solid #ccc; /* Bordes del botón */
+            background-color: transparent; /* Sin color de fondo */
+            color: #000; /* Color del texto del botón */
+            border-radius: 4px; /* Bordes redondeados del botón */
+            cursor: pointer; /* Cambiar cursor al pasar el ratón */
+        }
+        .button-container button:hover {
+            background-color: #f0f0f0; /* Color de fondo al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+
+<form class="container" action="javascript:void(0);" method="post" onsubmit="alert('Formulario enviado!');">
+    <div class="section">
+        <h3>Alta en el servicio</h3>
+        <label for="nombre">Nombre <span style="color:red;">*</span></label>
+        <input type="text" id="nombre" name="nombre" required aria-label="Nombre" 
+               oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ ]/g, '');" 
+               title="Solo se permiten letras y espacios">
+
+        <label for="apellidos">Apellidos <span style="color:red;">*</span></label>
+        <input type="text" id="apellidos" name="apellidos" required aria-label="Apellidos" 
+               oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ ]/g, '');" 
+               title="Solo se permiten letras y espacios">
+
+        <label for="dni">DNI <span style="color:red;">*</span></label>
+        <input type="text" id="dni" name="dni" required pattern="^[A-Za-z0-9]{9}$" maxlength="9" aria-label="DNI" 
+               title="Formato: 9 caracteres (letras y números)">
+        
+        <label for="contrasena">Contraseña <span style="color:red;">*</span></label>
+        <input type="password" id="contrasena" name="contrasena" required minlength="6" aria-label="Contraseña" title="La contraseña debe tener al menos 6 caracteres">
+    </div>
+
+    <div class="section">
+        <h3>Datos de contacto</h3>
+        <label for="telefono">Teléfono <span style="color:red;">*</span></label>
+        <input type="text" id="telefono" name="telefono" required pattern="^\d{9}$" maxlength="9" 
+               aria-label="Teléfono" title="Formato: 9 dígitos (ej: 612345678)" 
+               oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+
+        <label for="email">Email <span style="color:red;">*</span></label>
+        <input type="email" id="email" name="email" required aria-label="Email">
+
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion" aria-label="Dirección">
+
+        <label for="codigo_postal">Código Postal <span style="color:red;">*</span></label>
+        <input type="text" id="codigo_postal" name="codigo_postal" required 
+               pattern="^\d{5}$" maxlength="5" 
+               aria-label="Código Postal" title="Formato: 5 dígitos (ej: 28001)" 
+               oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+    </div>
+
+    <div class="button-container">
+        <button type="submit">Darme de alta</button>
+    </div>
+</form>
+
+</body>
+</html>
